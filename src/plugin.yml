@@ -1,0 +1,8 @@
+name: MultiWorld
+main: pl.bullcube.ULTUX.Main
+api-version: 1.13
+version: 1.0
+description: This plugin adds posibility to teleport to FLAT world in creative
+commands:
+  flat:
+    usage: Teleportuj sie miedzy swiatami!
