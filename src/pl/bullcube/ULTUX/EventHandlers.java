@@ -1,6 +1,5 @@
 package pl.bullcube.ULTUX;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

@@ -28,8 +28,6 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        saveDefaultConfig();
-        saveConfig();
 
 
         worldInventories.forEach((uid, status) -> {
@@ -120,7 +118,9 @@ public class Main extends JavaPlugin {
 //                    }
 //                    else player.teleport(flat.getSpawnLocation());
                     if (flatInventories.containsKey(player.getUniqueId().toString())) {
-                        player.teleport(flatInventories.get(player.getUniqueId().toString()).getLocation());
+                        Location location = flatInventories.get(player.getUniqueId().toString()).getLocation();
+                        location.setWorld(Bukkit.getServer().getWorld("flat"));
+                        player.teleport(location);
                     }
                     else {
                         player.teleport(flat.getSpawnLocation());

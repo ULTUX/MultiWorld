@@ -1,6 +1,8 @@
 package pl.bullcube.ULTUX;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.entity.Player;
@@ -62,6 +64,7 @@ public class PlayerStatus implements ConfigurationSerializable {
         this.health = player.getHealth();
         this.hunger = player.getFoodLevel();
         this.location = player.getLocation();
+        this.location.setWorld(Bukkit.getServer().getWorld("world"));
         this.enderchestInventory = player.getEnderChest().getContents();
         this.uid = player.getUniqueId().toString();
     }
@@ -109,6 +112,7 @@ public class PlayerStatus implements ConfigurationSerializable {
         hashMap.put("level", level);
         hashMap.put("health", health);
         hashMap.put("hunger", hunger);
+        location.setWorld(Bukkit.getServer().getWorld("world"));
         hashMap.put("location", location);
         hashMap.put("enderchest", enderchestInventory);
         hashMap.put("uid", uid);
