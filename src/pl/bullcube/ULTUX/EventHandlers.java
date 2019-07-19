@@ -12,7 +12,7 @@ public class EventHandlers implements Listener {
     @EventHandler
     public void PlayerTeleportEvent(PlayerTeleportEvent e){
         Player player = e.getPlayer();
-        if (e.getTo().getWorld().getName().equals("world") && e.getFrom().getWorld().getName().equals("flat")){
+        if (e.getFrom().getWorld().getName().equals("flat") && !e.getFrom().getWorld().getName().equals(e.getTo().getWorld().getName())){
             player.sendMessage(ChatColor.GOLD+"Wracasz na "+ChatColor.GREEN+ "normalny "+ChatColor.GOLD+"świat...");
             Main.flatInventories.put(player.getUniqueId().toString(), new PlayerStatus(player));
             player.getEnderChest().clear();
@@ -26,7 +26,7 @@ public class EventHandlers implements Listener {
 
 
 
-        else if (e.getTo().getWorld().getName().equals("flat") && e.getFrom().getWorld().getName().equals("world")){
+        else if (e.getTo().getWorld().getName().equals("flat") && !e.getFrom().getWorld().getName().equals(e.getTo().getWorld().getName())){
             player.sendMessage(ChatColor.GOLD+"Własnie jesteś teleportowany na świat "+ChatColor.GREEN+ "superpłaski"+ChatColor.GOLD+"...");
             Main.worldInventories.put(player.getUniqueId().toString(), new PlayerStatus(player));
             player.getInventory().clear();
