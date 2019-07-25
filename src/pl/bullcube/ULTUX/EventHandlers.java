@@ -5,9 +5,18 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class EventHandlers implements Listener {
+
+    @EventHandler
+    public void PlayerRespawnEvent(PlayerRespawnEvent e){
+        if (Main.worldInventories.containsKey(e.getPlayer().getUniqueId().toString())){
+            Main.worldInventories.get(e.getPlayer().getUniqueId().toString()).getPlayerStatus(e.getPlayer(), false);
+            Main.worldInventories.remove(e.getPlayer().getUniqueId().toString());
+        }
+    }
 
     @EventHandler
     public void PlayerTeleportEvent(PlayerTeleportEvent e){
