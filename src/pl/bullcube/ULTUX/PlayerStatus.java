@@ -15,6 +15,12 @@ import java.util.Map;
 
 @SerializableAs("PlayerStatus")
 public class PlayerStatus implements ConfigurationSerializable {
+    private World world;
+
+    public World getWorld() {
+        return world;
+    }
+
     private ItemStack[] inventory;
     private double health;
     private int hunger;
@@ -64,6 +70,7 @@ public class PlayerStatus implements ConfigurationSerializable {
         this.health = player.getHealth();
         this.hunger = player.getFoodLevel();
         this.location = player.getLocation();
+        this.world = player.getWorld();
         this.location.setWorld(Bukkit.getServer().getWorld("world"));
         this.enderchestInventory = player.getEnderChest().getContents();
         this.uid = player.getUniqueId().toString();

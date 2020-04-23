@@ -98,7 +98,8 @@ public class Main extends JavaPlugin {
 //                    }
 //                    else player.teleport(getServer().getWorld("world").getSpawnLocation());
                     if (worldInventories.containsKey(player.getUniqueId().toString())) {
-                        player.teleport(worldInventories.get(player.getUniqueId().toString()).getLocation());
+                        PlayerStatus playerStatus = worldInventories.get(player.getUniqueId().toString());
+                        player.teleport(new Location(playerStatus.getWorld(), playerStatus.getLocation().getX(), playerStatus.getLocation().getY(), playerStatus.getLocation().getZ()));
                     }
                     else {
                         player.teleport(Bukkit.getWorld("world").getSpawnLocation());
